@@ -1,5 +1,6 @@
 // Declare global variables for components, wires, and UI elements
 let agb, nandb, norb, notb, xorb, xnorb, orb, ofsb, onb, ofbb, clearButton, deleteButton, reevaluateButton;
+let highConstantButton, lowConstantButton; // New buttons
 let yOffset;
 let components = []; 
 let selectedComponent = null; 
@@ -334,7 +335,8 @@ function setup() {
   offBulb();
   clearCanvas();
   deleteComponentButton();
-  createReevaluateButton(); 
+  createReevaluateButton();
+  createHighLowConstantButtons(); // New buttons for high/low constant
 
 
 
@@ -714,6 +716,41 @@ function createReevaluateButton() {
 
   reevaluateButton.mousePressed(() => {
     updateCircuit(); 
+  });
+}
+
+// Create high and low constant buttons and functionality
+function createHighLowConstantButtons() {
+  highConstantButton = createButton('High Constant');
+  highConstantButton.position(10, 10);
+  highConstantButton.size(120, 30);
+  highConstantButton.style('border-width', '2px');
+  highConstantButton.style('border-color', 'black');
+  highConstantButton.style('background', 'lightgreen');
+
+  highConstantButton.mousePressed(() => {
+    if (selectedComponent && (selectedComponent.type === 'onState' || selectedComponent.type === 'offState')) {
+      selectedComponent.type = 'onState';
+      selectedComponent.img = onStateImg;
+      selectedComponent.nodes[0].value = 1;
+      updateCircuit();
+    }
+  });
+
+  lowConstantButton = createButton('Low Constant');
+  lowConstantButton.position(140, 10);
+  lowConstantButton.size(120, 30);
+  lowConstantButton.style('border-width', '2px');
+  lowConstantButton.style('border-color', 'black');
+  lowConstantButton.style('background', 'lightcoral');
+
+  lowConstantButton.mousePressed(() => {
+    if (selectedComponent && (selectedComponent.type === 'onState' || selectedComponent.type === 'offState')) {
+      selectedComponent.type = 'offState';
+      selectedComponent.img = offStateImg;
+      selectedComponent.nodes[0].value = 0;
+      updateCircuit();
+    }
   });
 }
 
