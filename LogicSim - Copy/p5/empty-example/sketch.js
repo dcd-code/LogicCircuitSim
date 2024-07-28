@@ -101,8 +101,9 @@ class Component {
       ellipse(node.x, node.y, 10, 10); 
 
       // Display node value
+      strokeWeight(1)
       fill(0);
-      textSize(12);
+      textSize(10);
       textAlign(CENTER, CENTER);
       
       if (node.connected || node.value !== 'NA') {
@@ -344,7 +345,7 @@ function setup() {
 
 // Main draw loop
 function draw() {
-  background("gray"); 
+  background("white"); 
   bnames(); 
 
   textSize(32)
@@ -647,7 +648,7 @@ function offBulb() {
 // Create clear canvas button and functionality
 function clearCanvas() {
   clearButton = createButton('CLEAR CANVAS');
-  clearButton.position(1880, 0);
+  clearButton.position(10, 50);
   clearButton.size(120, 30);
   clearButton.style('border-width', '3px');
   clearButton.style('border-color', 'black');
@@ -668,7 +669,7 @@ function clearCanvas() {
 // Create delete component button and functionality
 function deleteComponentButton() {
   deleteButton = createButton('DELETE COMPONENT');
-  deleteButton.position(1880, 40);
+  deleteButton.position(10, 90);
   deleteButton.size(120, 30);
   deleteButton.style('border-width', '3px');
   deleteButton.style('border-color', 'black');
@@ -708,7 +709,7 @@ function deleteComponentButton() {
 // Create reevaluate button and functionality
 function createReevaluateButton() {
   reevaluateButton = createButton('REEVALUATE');
-  reevaluateButton.position(1880, 80);
+  reevaluateButton.position(10, 130);
   reevaluateButton.size(120, 30);
   reevaluateButton.style('border-width', '3px');
   reevaluateButton.style('border-color', 'black');
